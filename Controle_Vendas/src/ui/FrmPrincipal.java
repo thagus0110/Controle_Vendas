@@ -5,6 +5,7 @@
 package ui;
 
 import java.awt.Frame;
+import java.awt.event.*;
 import java.awt.event.ActionEvent;
 
 import javax.swing.BoxLayout;
@@ -26,10 +27,14 @@ public class FrmPrincipal {
 	}
 
 	private void menuCadCliActionPerformed(ActionEvent e) {
-		FrmCadCli cadCli = new FrmCadCli(owner);
-		cadCli.setVisible(true);
+		FrmCadVendas cadVenda = new FrmCadVendas(owner);
+		cadVenda.setVisible(true);
+		
 		
 	}
+
+
+
 
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -40,6 +45,7 @@ public class FrmPrincipal {
 		menuCadCli = new JMenuItem();
 		menu2 = new JMenu();
 		menu3 = new JMenu();
+		menuCadVenda = new JMenuItem();
 
 		//======== frmPrincipal ========
 		{
@@ -69,7 +75,12 @@ public class FrmPrincipal {
 
 				//======== menu3 ========
 				{
-					menu3.setText("VENDA");
+					menu3.setText("VENDAS");
+
+					//---- menuCadCli ----
+					menuCadVenda.setText("NOVA VENDA");
+					menuCadVenda.addActionListener(e -> menuCadCliActionPerformed(e));
+					menu3.add(menuCadVenda);
 				}
 				menuBar1.add(menu3);
 			}
@@ -88,6 +99,7 @@ public class FrmPrincipal {
 	private JMenuItem menuCadCli;
 	private JMenu menu2;
 	private JMenu menu3;
+	private JMenuItem menuCadVenda;
 	// JFormDesigner - End of variables declaration  //GEN-END:variables
 	
 }
