@@ -69,15 +69,7 @@ public class FrmCadCli extends JDialog {
 		
 		this.setCpf(txtCpf.getText());
 		this.setNome(txtNome.getText());
-		
-			this.setCpf(txtCpf.getText());
-			this.setNome(txtNome.getText());
-				
-			cli.addCliente(cpf, nome);
-			txtCpf.setText("");
-			txtNome.setText("");
-			attTable();
-
+					
 		cli.addCliente(cpf, nome);
 		txtCpf.setText("");
 		txtNome.setText("");
