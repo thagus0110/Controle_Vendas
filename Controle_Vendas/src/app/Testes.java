@@ -25,6 +25,7 @@ public class Testes {
 					+ "1 - CLIENTE\n"
 					+ "2 - ALTERAR ESTOQUE\n"
 					+ "3 - TESTAR O BANCO DE DADOS\n"
+					+ "4 - CONSULTAR ESTOQUE\n"
 					+ "0 - SAIR\n"));
 				
 				switch(esc) {
@@ -40,6 +41,11 @@ public class Testes {
 				case 3:
 					con.verificarBanco();
 					break;
+					
+				case 4:
+					es.consultarEstoque();
+					break;
+					
 				case 0:
 					i = 0;
 					break;
