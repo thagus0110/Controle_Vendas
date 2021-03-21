@@ -107,4 +107,52 @@ public class Vendas {
 			}
 
 }
+		
+		public void cadastrarVenda(String cpfCli, int codProd, int quantidadeItens) {
+	
+			
+			String query = "INSERT INTO tbvenda(codProd, cpfCli, descricaoProd, nomeCli, nomeProd, precoProd, quantidadeItens, totalVenda) VALUES ("+codProd+", '"+cpfCli+"', '"+descricaoProd+"', '"+nomeCli+"','"+nomeProd+"', "+precoProd+","+quantidadeItens+", "+totalVenda+")";
+			
+			try{
+				con.conectar();
+				con.stat.executeUpdate(query);
+				JOptionPane.showMessageDialog(null,"CADASTRO REALIZADO");
+				con.desconectar();
+			}
+			
+			catch (Exception e){
+				System.out.println(e.getMessage());
+			}
+			
+		}
+		
+		
+		public void whatToDo() throws SQLException {
+			int esc = Integer.parseInt(JOptionPane.showInputDialog("O QUE DESEJA FAZER?\n"
+					+ "1 - CADASTRAR UMA NOVA COMPRA\n"
+					+ "2 - EXIBIR COMPRAS\n"
+					+ "0 - SAIR\n"));
+			
+			switch(esc) {
+			
+			case 1:
+				cpfCli = JOptionPane.showInputDialog("Informe o CPF do Cliente: ");
+				
+				codProd = Integer.parseInt(JOptionPane.showInputDialog("Informe o Nome do Cliente: "));
+				quantidadeItens = Integer.parseInt(JOptionPane.showInputDialog("Informe a quantia de itens comprados: "));
+				
+				cadastrarVenda(cpfCli, codProd, quantidadeItens);
+				whatToDo();
+				break;
+			case 2:
+				
+				consultarVendas();
+				whatToDo();
+				break;
+			case 0:
+				tst.whatToDo();
+				break;
+			
+			}
+		}
 }
