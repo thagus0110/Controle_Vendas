@@ -13,6 +13,7 @@ import entities.Vendas;
 public class Testes {
 
 	public void whatToDo() throws SQLException {
+		
 		Scanner sc = new Scanner(System.in);
 		Estoque es = new Estoque();
 

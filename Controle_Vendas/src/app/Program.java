@@ -1,14 +1,23 @@
 package app;
 
+import java.awt.Window;
 import java.sql.SQLException;
 
+import ui.FrmPrincipal;
+
 public class Program {
+
 
 	public static void main(String[] args) throws SQLException {
 		
 		Testes t = new Testes();
 		
-		t.whatToDo();
+		
+		FrmPrincipal frm = new FrmPrincipal();
+		
+		
+		
+		//t.whatToDo();
 	}
 
 }
