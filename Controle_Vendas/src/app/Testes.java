@@ -23,7 +23,7 @@ public class Testes {
 		while(i != 0) {
 			int esc = Integer.parseInt(JOptionPane.showInputDialog("O que deseja fazer?\n"
 					+ "1 - CLIENTE\n"
-					+ "2 - ALTERAR ESTOQUE\n"
+					+ "2 - ESTOQUE\n"
 					+ "3 - TESTAR O BANCO DE DADOS\n"
 					+ "4 - CONSULTAR ESTOQUE\n"
 					+ "0 - SAIR\n"));
