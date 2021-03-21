@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import conn.Conexao;
 import entities.Cliente;
 import entities.Estoque;
+import entities.Vendas;
 
 public class Testes {
 
@@ -17,6 +18,7 @@ public class Testes {
 
 		Conexao con = new Conexao();
 		Cliente cli = new Cliente();		
+		Vendas vn = new Vendas();
 				
 		int i = 1;
 		
@@ -26,6 +28,7 @@ public class Testes {
 					+ "2 - ALTERAR ESTOQUE\n"
 					+ "3 - TESTAR O BANCO DE DADOS\n"
 					+ "4 - CONSULTAR ESTOQUE\n"
+					+ "5 - CONSULTAR VENDAS\n"
 					+ "0 - SAIR\n"));
 				
 				switch(esc) {
@@ -44,6 +47,10 @@ public class Testes {
 					
 				case 4:
 					es.consultarEstoque();
+					break;
+				
+				case 5:
+					vn.consultarVendas();
 					break;
 					
 				case 0:
