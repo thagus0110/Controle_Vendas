@@ -108,25 +108,29 @@ public class Vendas {
 
 }
 		
-		public void cadastrarVenda(String cpfCli, int codProd, int quantidadeItens) {
+		public void cadastrarVenda(String nomeCli, String nomeProd, String descricaoProd, double precoProd, String cpfCli, int codProd, int quantidadeItens) throws SQLException{
+			
+			//CADASTRA NO BANCO
+			
+			double totalVenda = quantidadeItens*precoProd;
+			
+					try{
+						con.conectar();
+						String query = "INSERT INTO tbvenda(codProd, cpfCli, descricaoProd, nomeCli, nomeProd, precoProd, quantidadeItens, totalVenda) "
+								+ "VALUES ("+codProd+", '"+cpfCli+"', '"+descricaoProd+"', '"+nomeCli+"','"+nomeProd+"', "+precoProd+","+quantidadeItens+", "+totalVenda+")";
+						
+						con.conectar();
+						con.stat.executeUpdate(query);
+						JOptionPane.showMessageDialog(null,"VENDA REALIZADA");
+						con.desconectar();
+					
+						}catch (Exception e) {
+							System.out.println(e.getMessage());
+						}
+						
 	
-			
-			String query = "INSERT INTO tbvenda(codProd, cpfCli, descricaoProd, nomeCli, nomeProd, precoProd, quantidadeItens, totalVenda) VALUES ("+codProd+", '"+cpfCli+"', '"+descricaoProd+"', '"+nomeCli+"','"+nomeProd+"', "+precoProd+","+quantidadeItens+", "+totalVenda+")";
-			
-			try{
-				con.conectar();
-				con.stat.executeUpdate(query);
-				JOptionPane.showMessageDialog(null,"CADASTRO REALIZADO");
-				con.desconectar();
-			}
-			
-			catch (Exception e){
-				System.out.println(e.getMessage());
-			}
-			
 		}
-		
-		
+			
 		public void whatToDo() throws SQLException {
 			int esc = Integer.parseInt(JOptionPane.showInputDialog("O QUE DESEJA FAZER?\n"
 					+ "1 - CADASTRAR UMA NOVA COMPRA\n"
@@ -137,11 +141,10 @@ public class Vendas {
 			
 			case 1:
 				cpfCli = JOptionPane.showInputDialog("Informe o CPF do Cliente: ");
-				
-				codProd = Integer.parseInt(JOptionPane.showInputDialog("Informe o Nome do Cliente: "));
+				codProd = Integer.parseInt(JOptionPane.showInputDialog("Informe o Código do produto: "));
 				quantidadeItens = Integer.parseInt(JOptionPane.showInputDialog("Informe a quantia de itens comprados: "));
 				
-				cadastrarVenda(cpfCli, codProd, quantidadeItens);
+				dadosBanco(cpfCli, codProd, quantidadeItens);
 				whatToDo();
 				break;
 			case 2:
@@ -155,4 +158,68 @@ public class Vendas {
 			
 			}
 		}
+		
+		
+		public void dadosBanco(String cpfCli, int codProd, int quantidadeItens) throws SQLException {
+
+			String nomeCli="";
+			String nomeProd="";
+			String descricaoProd="";
+			double precoProd=0;
+			
+			//PEGAR DADOS DO PRODUTO	
+			try{
+				con.conectar();
+				
+				String prod = "SELECT descricaoProd, nomeProd, precoProd FROM tbestoque WHERE codProd ="+codProd+"";
+				ResultSet rs = con.stat.executeQuery(prod);
+			
+				try {
+					
+					while(rs.next()) {
+						
+						 nomeProd = rs.getString("nomeProd");
+						 descricaoProd = rs.getString("descricaoProd");
+						 precoProd = rs.getDouble("precoProd");
+						
+				}
+				}catch (Exception e) {
+					System.out.println(e.getMessage());
+				}
+				
+				
+			}catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+			
+			
+			
+			//PEGAR DADOS DO CLIENTE
+			try{
+					con.conectar();
+					String cli = "SELECT nomeCli FROM tbcliente WHERE cpfCli ='"+cpfCli+"'";
+					ResultSet rs = con.stat.executeQuery(cli);
+					
+				
+					try {
+						
+						while(rs.next()) {
+							nomeCli = rs.getString("nomeCli");
+						}
+					}
+					catch (Exception e) {
+						System.out.println(e.getMessage());
+					}
+					
+				
+			}catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+			
+			
+			cadastrarVenda(nomeCli, nomeProd, descricaoProd, precoProd, cpfCli,  codProd,  quantidadeItens);
+
+		}
+		
 }
+
