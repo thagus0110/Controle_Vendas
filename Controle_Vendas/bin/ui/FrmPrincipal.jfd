@@ -20,8 +20,9 @@ new FormModel {
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
-					name: "menu2"
+					name: "btnEstq"
 					"text": "ESTOQUE"
+					addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "btnEstqStateChanged", true ) )
 				} )
 				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
 					name: "menu3"

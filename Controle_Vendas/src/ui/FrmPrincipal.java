@@ -13,6 +13,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.event.*;
 
 /**
  * @author Gustavo
@@ -31,6 +32,11 @@ public class FrmPrincipal {
 		
 	}
 
+	private void btnEstqStateChanged(ChangeEvent e) {
+		FrmEstoque estoque = new FrmEstoque(owner);
+		estoque.setVisible(true);
+	}
+
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
 		// Generated using JFormDesigner Evaluation license - Gustavo
@@ -38,7 +44,7 @@ public class FrmPrincipal {
 		menuBar1 = new JMenuBar();
 		menu1 = new JMenu();
 		menuCadCli = new JMenuItem();
-		menu2 = new JMenu();
+		btnEstq = new JMenu();
 		menu3 = new JMenu();
 
 		//======== frmPrincipal ========
@@ -61,11 +67,12 @@ public class FrmPrincipal {
 				}
 				menuBar1.add(menu1);
 
-				//======== menu2 ========
+				//======== btnEstq ========
 				{
-					menu2.setText("ESTOQUE");
+					btnEstq.setText("ESTOQUE");
+					btnEstq.addChangeListener(e -> btnEstqStateChanged(e));
 				}
-				menuBar1.add(menu2);
+				menuBar1.add(btnEstq);
 
 				//======== menu3 ========
 				{
@@ -86,7 +93,7 @@ public class FrmPrincipal {
 	private JMenuBar menuBar1;
 	private JMenu menu1;
 	private JMenuItem menuCadCli;
-	private JMenu menu2;
+	private JMenu btnEstq;
 	private JMenu menu3;
 	// JFormDesigner - End of variables declaration  //GEN-END:variables
 	

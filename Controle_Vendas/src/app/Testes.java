@@ -47,7 +47,7 @@ public class Testes {
 					break;
 					
 				case 4:
-					es.consultarEstoque();
+					
 					break;
 				
 				case 5:

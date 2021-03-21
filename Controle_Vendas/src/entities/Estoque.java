@@ -121,37 +121,6 @@ public class Estoque {
 			
 		}
 		
-		public void consultarEstoque() {		
-			ResultSet rs=null;
-			
-			try {
-				con.conectar();
-				
-				
-				rs = con.stat.executeQuery("SELECT * FROM tbestoque");
-			}
-			
-			catch (Exception e) {
-				System.out.println("Erro ao passar os dados do Statment para ResultSet");
-			}
-			
-			try {
-				while(rs.next()) {
-					int codProd = rs.getInt("codProd");
-					String nomeProd = rs.getString("nomeProd");
-					String descricaoProd = rs.getString("descricaoProd");
-					int quantidadeProd = rs.getInt("quantidadeProd");
-					double precoProd = rs.getDouble("precoProd");
-					
-					System.out.println(codProd + "  " + nomeProd + "  " + descricaoProd + "  " + quantidadeProd + "  " + precoProd);
-				}
-			}
-			
-			catch (Exception e) {
-				
-			}
-			
-		}
 		
 		
 		
