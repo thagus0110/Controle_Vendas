@@ -104,6 +104,42 @@ public class FrmCadCli extends JDialog {
 		attTable();
 	}
 
+
+	private void btnAltActionPerformed(ActionEvent e) {
+		this.setNome(txtNome.getText());
+		this.setCpf(txtCpf.getText());
+		
+		try{
+			cli.alterarNome(cpf, nome);
+		}
+		
+		catch (Exception i){
+			
+		}
+		txtCpf.setText("");
+		txtNome.setText("");
+		attTable();
+	}
+
+	private void btnRemoverActionPerformed(ActionEvent e) {
+		this.setCpf(txtCpf.getText());
+		
+		try {
+			cli.removerCliente(cpf);
+		}
+		
+		catch(Exception i){
+			
+		}
+		txtCpf.setText("");
+		txtNome.setText("");
+		attTable();
+	}
+	
+	
+	
+
+
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY
 		// //GEN-BEGIN:initComponents
@@ -116,10 +152,11 @@ public class FrmCadCli extends JDialog {
 		scrollPane1 = new JScrollPane();
 		tabCliente = new JTable();
 		btnAtualizar = new JButton();
-		btnCadastrar2 = new JButton();
-		btnCadastrar3 = new JButton();
+		btnAlt = new JButton();
+		btnRemover = new JButton();
 
 		//======== this ========
+		setTitle("CLIENTE");
 		var contentPane = getContentPane();
 		contentPane.setLayout(null);
 		contentPane.add(txtCpf);
@@ -142,7 +179,7 @@ public class FrmCadCli extends JDialog {
 		btnCadastrar.setFont(btnCadastrar.getFont().deriveFont(btnCadastrar.getFont().getSize() - 2f));
 		btnCadastrar.addActionListener(e -> btnCadastrarActionPerformed(e));
 		contentPane.add(btnCadastrar);
-		btnCadastrar.setBounds(405, 255, 100, 35);
+		btnCadastrar.setBounds(405, 255, 135, 35);
 
 		//======== scrollPane1 ========
 		{
@@ -183,19 +220,19 @@ public class FrmCadCli extends JDialog {
 		contentPane.add(btnAtualizar);
 		btnAtualizar.setBounds(525, 120, 104, 35);
 
-		//---- btnCadastrar2 ----
-		btnCadastrar2.setText("EDITAR");
-		btnCadastrar2.setFont(btnCadastrar2.getFont().deriveFont(btnCadastrar2.getFont().getSize() - 2f));
-		btnCadastrar2.addActionListener(e -> btnCadastrarActionPerformed(e));
-		contentPane.add(btnCadastrar2);
-		btnCadastrar2.setBounds(405, 295, 101, 35);
+		//---- btnAlt ----
+		btnAlt.setText("ALTERAR (pelo cpf)");
+		btnAlt.setFont(btnAlt.getFont().deriveFont(btnAlt.getFont().getSize() - 2f));
+		btnAlt.addActionListener(e -> btnAltActionPerformed(e));
+		contentPane.add(btnAlt);
+		btnAlt.setBounds(405, 295, 135, 35);
 
-		//---- btnCadastrar3 ----
-		btnCadastrar3.setText("REMOVER");
-		btnCadastrar3.setFont(btnCadastrar3.getFont().deriveFont(btnCadastrar3.getFont().getSize() - 2f));
-		btnCadastrar3.addActionListener(e -> btnCadastrarActionPerformed(e));
-		contentPane.add(btnCadastrar3);
-		btnCadastrar3.setBounds(405, 335, 101, 35);
+		//---- btnRemover ----
+		btnRemover.setText("REMOVER");
+		btnRemover.setFont(btnRemover.getFont().deriveFont(btnRemover.getFont().getSize() - 2f));
+		btnRemover.addActionListener(e -> btnRemoverActionPerformed(e));
+		contentPane.add(btnRemover);
+		btnRemover.setBounds(405, 335, 135, 35);
 
 		contentPane.setPreferredSize(new Dimension(685, 450));
 		pack();
@@ -213,7 +250,7 @@ public class FrmCadCli extends JDialog {
 	private JScrollPane scrollPane1;
 	private JTable tabCliente;
 	private JButton btnAtualizar;
-	private JButton btnCadastrar2;
-	private JButton btnCadastrar3;
+	private JButton btnAlt;
+	private JButton btnRemover;
 	// JFormDesigner - End of variables declaration //GEN-END:variables
 }
