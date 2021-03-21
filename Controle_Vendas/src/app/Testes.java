@@ -29,7 +29,7 @@ public class Testes {
 					+ "2 - ESTOQUE\n"
 					+ "3 - TESTAR O BANCO DE DADOS\n"
 					+ "4 - CONSULTAR ESTOQUE\n"
-					+ "5 - CONSULTAR VENDAS\n"
+					+ "5 - ACESSAR VENDAS\n"
 					+ "0 - SAIR\n"));
 				
 				switch(esc) {
@@ -51,7 +51,7 @@ public class Testes {
 					break;
 				
 				case 5:
-					vn.consultarVendas();
+					vn.whatToDo();
 					break;
 					
 				case 0:

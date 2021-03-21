@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -65,13 +66,24 @@ public class FrmCadCli extends JDialog {
 
 	// AÇÕES
 	private void btnCadastrarActionPerformed(ActionEvent e) {
+		
 		this.setCpf(txtCpf.getText());
 		this.setNome(txtNome.getText());
+		
+			this.setCpf(txtCpf.getText());
+			this.setNome(txtNome.getText());
+				
+			cli.addCliente(cpf, nome);
+			txtCpf.setText("");
+			txtNome.setText("");
+			attTable();
 
 		cli.addCliente(cpf, nome);
 		txtCpf.setText("");
 		txtNome.setText("");
 		attTable();
+
+		
 	}
 
 	public void attTable() {
