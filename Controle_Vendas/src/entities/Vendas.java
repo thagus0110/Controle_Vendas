@@ -130,11 +130,31 @@ public class Vendas {
 						
 	
 		}
+		
+			public void excluirVenda(int codProd, String cpfCli) {
+						
+						
+						try{
+							con.conectar();
+							String query = "DELETE FROM tbVenda WHERE codProd ='"+codProd+"' AND codCli = '"+cpfCli+"'";
+							con.stat.executeUpdate(query);
+							
+							JOptionPane.showMessageDialog(null,"EXLCUSÃO REALIZADA");
+							con.desconectar();
+						}
+						
+						catch (Exception e){
+							System.out.println(e.getMessage());
+						}
+						
+						
+					}
 			
 		public void whatToDo() throws SQLException {
 			int esc = Integer.parseInt(JOptionPane.showInputDialog("O QUE DESEJA FAZER?\n"
 					+ "1 - CADASTRAR UMA NOVA COMPRA\n"
 					+ "2 - EXIBIR COMPRAS\n"
+					+ "3 - DELETAR COMPRAS\n"
 					+ "0 - SAIR\n"));
 			
 			switch(esc) {
@@ -152,6 +172,12 @@ public class Vendas {
 				consultarVendas();
 				whatToDo();
 				break;
+			case 3:
+				cpfCli = JOptionPane.showInputDialog("Informe o CPF do Cliente: ");
+				codProd = Integer.parseInt(JOptionPane.showInputDialog("Informe o Código do produto: "));
+				excluirVenda(codProd, cpfCli);
+				whatToDo();
+				break;	
 			case 0:
 				tst.whatToDo();
 				break;
