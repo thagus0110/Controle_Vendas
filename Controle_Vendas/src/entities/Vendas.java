@@ -98,7 +98,7 @@ public class Vendas {
 					
 				}
 					
-					JOptionPane.showMessageDialog(null, codProd +" - "+nomeProd+" - "+ descricaoProd +" - "+ quantidadeItens + "\n Cliente: "+cpfCli+" - "+nomeCli+" - " +totalVenda);
+					System.out.println(codProd +" - "+nomeProd+" - "+ descricaoProd +" - "+ quantidadeItens + " - " + "Cliente: "+cpfCli+" - "+nomeCli+" - " +totalVenda);
 				
 			}
 			
