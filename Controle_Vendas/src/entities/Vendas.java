@@ -8,12 +8,14 @@ import javax.swing.JOptionPane;
 
 import app.Testes;
 import conn.Conexao;
+import ui.FrmCadVendas;
 
 public class Vendas {
 	
 		// INSTANCIAS
 		Conexao con = new Conexao();		
 		Testes tst = new Testes();
+		FrmCadVendas frm;
 		
 		int codProd;
 		String cpfCli;
@@ -111,15 +113,14 @@ public class Vendas {
 		public void cadastrarVenda(String nomeCli, String nomeProd, String descricaoProd, double precoProd, String cpfCli, int codProd, int quantidadeItens) throws SQLException{
 			
 			//CADASTRA NO BANCO
-			
 			double totalVenda = quantidadeItens*precoProd;
+			
 			
 					try{
 						con.conectar();
 						String query = "INSERT INTO tbvenda(codProd, cpfCli, descricaoProd, nomeCli, nomeProd, precoProd, quantidadeItens, totalVenda) "
 								+ "VALUES ("+codProd+", '"+cpfCli+"', '"+descricaoProd+"', '"+nomeCli+"','"+nomeProd+"', "+precoProd+","+quantidadeItens+", "+totalVenda+")";
 						
-						con.conectar();
 						con.stat.executeUpdate(query);
 						JOptionPane.showMessageDialog(null,"VENDA REALIZADA");
 						con.desconectar();
@@ -128,10 +129,9 @@ public class Vendas {
 							System.out.println(e.getMessage());
 						}
 						
-	
 		}
 		
-			public void excluirVenda(int codProd, String cpfCli) {
+		public void excluirVenda(int codProd, String cpfCli) {
 						
 						
 						try{
@@ -188,10 +188,9 @@ public class Vendas {
 		
 		public void dadosBanco(String cpfCli, int codProd, int quantidadeItens) throws SQLException {
 
-			String nomeCli="";
-			String nomeProd="";
-			String descricaoProd="";
-			double precoProd=0;
+			String nomeProd = "";
+			String descricaoProd = "";
+			double precoProd = 0;
 			
 			//PEGAR DADOS DO PRODUTO	
 			try{
@@ -243,7 +242,71 @@ public class Vendas {
 			}
 			
 			
-			cadastrarVenda(nomeCli, nomeProd, descricaoProd, precoProd, cpfCli,  codProd,  quantidadeItens);
+			
+
+		}
+		
+
+
+		public void interceccao() throws SQLException {
+			
+			String nomeProd = "";
+			String descricaoProd = "";
+			double precoProd = 0;
+			
+			
+			//PEGAR DADOS DO PRODUTO	
+			try{
+				con.conectar();
+				String prod = "SELECT descricaoProd, nomeProd, precoProd FROM tbestoque WHERE codProd ="+codProd+"";
+				ResultSet rs = con.stat.executeQuery(prod);
+			
+				try {
+					
+					while(rs.next()) {
+						
+						 nomeProd = rs.getString("nomeProd");
+						 descricaoProd = rs.getString("descricaoProd");
+						 precoProd = rs.getDouble("precoProd");
+						
+				}
+				}catch (Exception e) {
+					System.out.println(e.getMessage());
+				}
+				
+				
+			}catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+			
+			
+			
+			//PEGAR DADOS DO CLIENTE
+			try{
+					con.conectar();
+					String cli = "SELECT nomeCli FROM tbcliente WHERE cpfCli ='"+cpfCli+"'";
+					ResultSet rs = con.stat.executeQuery(cli);
+					
+				
+					try {
+						
+						while(rs.next()) {
+							nomeCli = rs.getString("nomeCli");
+						}
+					}
+					catch (Exception e) {
+						System.out.println(e.getMessage());
+					}
+					
+				
+			}catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+			
+
+			
+			cadastrarVenda(nomeCli,  nomeProd,  descricaoProd,  precoProd,  cpfCli,  codProd,  quantidadeItens);
+			
 
 		}
 		

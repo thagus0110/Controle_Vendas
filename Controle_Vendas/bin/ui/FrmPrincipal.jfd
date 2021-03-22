@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.3.1.342" Java: "15.0.1" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.3.1.342" Java: "15.0.2" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
@@ -27,6 +27,11 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
 					name: "menu3"
 					"text": "VENDA"
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "menuCadVenda"
+						"text": "NOVA VENDA"
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "menuCadVendaActionPerformed", true ) )
+					} )
 				} )
 			}
 		}, new FormLayoutConstraints( null ) {
