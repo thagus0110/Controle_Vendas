@@ -52,6 +52,8 @@ public class FrmCadVendas extends JDialog {
 		this.codVenda = codVenda;
 	}
 
+	
+	
 	public int getCodProd() {
 		return codProd;
 	}
@@ -118,19 +120,25 @@ public class FrmCadVendas extends JDialog {
 	}
 
 	// AÇÕES
-	private void btnCadastrarActionPerformed(ActionEvent e) throws SQLException {
+	private void btnCadastrarActionPerformed(ActionEvent e) {
 		
 		this.setCodProd(Integer.parseInt(txtCodProd.getText()));
 		this.setCpfCli(txtCpf.getText());
 		this.setQuantidadeItens(Integer.parseInt(txtQuantidade.getText()));
 		
+		try {
+			ven.dadosBanco(cpfCli, codProd, quantidadeItens);
+			txtCodProd.setText("");
+			txtQuantidade.setText("");
+			txtCpf.setText("");
+			txtCodVenda.setText("");
+			attTable();
+		}
 		
-		ven.dadosBanco(cpfCli, codProd, quantidadeItens);;
-
-		txtCodProd.setText("");
-		txtQuantidade.setText("");
-		txtCpf.setText("");
-		attTable();
+		catch(Exception i){
+			
+		}
+		
 
 		
 	}
@@ -147,8 +155,7 @@ public class FrmCadVendas extends JDialog {
 
 	        while(rs.next()){
 
-	        	ven.dadosBanco(cpfCli, codProd, quantidadeItens);
-	        	
+	        		        	
 	            tb.addRow(new Object[]{rs.getInt("codVenda"),
 	            rs.getString("cpfCli"),
 	            rs.getString("nomeCli"),
@@ -175,14 +182,14 @@ public class FrmCadVendas extends JDialog {
 		attTable();
 	}
 
-	private void btnAltActionPerformed(ActionEvent e) throws SQLException {
+	private void btnAltActionPerformed(ActionEvent e) {
 		
 		this.setCodVenda(Integer.parseInt(txtCodVenda.getText()));
 		this.setCodProd(Integer.parseInt(txtCodProd.getText()));
 		this.setCpfCli(txtCpf.getText());
 		this.setQuantidadeItens(Integer.parseInt(txtQuantidade.getText()));
 		
-		ven.alteraVenda(codVenda, codProd, cpfCli, quantidadeItens);
+		ven.alterarVenda(getCodVenda(), getCodProd(), getCpfCli(), getQuantidadeItens());
 		
 		txtCodVenda.setText("");
 		txtCodProd.setText("");
@@ -226,7 +233,7 @@ public class FrmCadVendas extends JDialog {
 		txtCodVenda = new JTextField();
 
 		//======== this ========
-		setTitle("CLIENTE");
+		setTitle("VENDAS");
 		var contentPane = getContentPane();
 		contentPane.setLayout(null);
 		contentPane.add(txtCodProd);
@@ -247,14 +254,7 @@ public class FrmCadVendas extends JDialog {
 		//---- btnCadastrar ----
 		btnCadastrar.setText("CADASTRAR");
 		btnCadastrar.setFont(btnCadastrar.getFont().deriveFont(btnCadastrar.getFont().getSize() - 2f));
-		btnCadastrar.addActionListener(e -> {
-			try {
-				btnCadastrarActionPerformed(e);
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		});
+		btnCadastrar.addActionListener(e -> btnCadastrarActionPerformed(e));
 		contentPane.add(btnCadastrar);
 		btnCadastrar.setBounds(405, 295, 135, 35);
 
@@ -305,14 +305,7 @@ public class FrmCadVendas extends JDialog {
 		//---- btnAlt ----
 		btnAlt.setFont(btnAlt.getFont().deriveFont(btnAlt.getFont().getSize() - 2f));
 		btnAlt.setText("ALTERA VENDA");
-		btnAlt.addActionListener(e -> {
-			try {
-				btnAltActionPerformed(e);
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		});
+		btnAlt.addActionListener(e -> btnAltActionPerformed(e));
 		contentPane.add(btnAlt);
 		btnAlt.setBounds(405, 335, 135, 35);
 

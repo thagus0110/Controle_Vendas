@@ -2,7 +2,6 @@ package entities;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -80,17 +79,14 @@ public class Vendas {
 		public double getTotalVenda() {
 			return totalVenda;
 		}
-		public void setTotalVenda(double totalVenda) {
-			this.totalVenda = totalVenda;
+		public void setTotalVenda(int quantidadeItens) {
+			this.totalVenda = quantidadeItens * getPrecoProd();
 		}
 		
 		
 		public void dadosBanco(String cpfCli, int codProd, int quantidadeItens) throws SQLException {
 
-			String nomeProd = "";
-			String descricaoProd = "";
-			double precoProd = 0;
-			
+						
 			//PEGAR DADOS DO PRODUTO	
 			try{
 				con.conectar();
@@ -102,9 +98,9 @@ public class Vendas {
 					
 					while(rs.next()) {
 						
-						 nomeProd = rs.getString("nomeProd");
-						 descricaoProd = rs.getString("descricaoProd");
-						 precoProd = rs.getDouble("precoProd");
+						 setNomeProd(rs.getString("nomeProd"));
+						 setDescricaoProd(rs.getString("descricaoProd"));
+						 setPrecoProd(rs.getDouble("precoProd"));
 						
 				}
 				}catch (Exception e) {
@@ -128,7 +124,7 @@ public class Vendas {
 					try {
 						
 						while(rs.next()) {
-							nomeCli = rs.getString("nomeCli");
+							setNomeCli(rs.getString("nomeCli"));
 						}
 					}
 					catch (Exception e) {
@@ -141,7 +137,7 @@ public class Vendas {
 			}
 			
 			//ENVIA PARA CADASTRO
-			cadastrarVenda(descricaoProd, nomeProd, descricaoProd, precoProd, cpfCli, codProd, quantidadeItens);
+			cadastrarVenda(getNomeCli(), getNomeProd(), getDescricaoProd(), getPrecoProd(), cpfCli, codProd, quantidadeItens);
 
 		}
 		
@@ -163,14 +159,23 @@ public class Vendas {
 						
 					}
 		
-		public void alteraVenda(int codVenda, int codProd, String cpfCli, int quantidadeItens) {
+		public void alterarVenda(int codVenda, int codProd, String cpfCli, int quantidadeItens) {
 			
 			try{
 				con.conectar();
-				String query = "UPDATE tbVenda SET codProd = "+codProd+", cpfCli = '"+cpfCli+"', quantidadeItens = "+quantidadeItens+" WHERE codVenda = "+codVenda+"";
+				ResultSet rs;
+				rs = con.stat.executeQuery("SELECT precoProd FROM tbestoque WHERE codProd = '"+ codProd +"' ");
+				
+				while(rs.next()) {
+					setPrecoProd(rs.getDouble("precoProd"));
+					setTotalVenda(quantidadeItens);
+				}				
+						
+				
+				String query = "UPDATE tbvenda SET codProd = "+codProd+", cpfCli = '"+cpfCli+"', quantidadeItens = "+quantidadeItens+", totalVenda = "+ getTotalVenda() + "  WHERE codVenda = "+codVenda+"";
 				con.stat.executeUpdate(query);
 				
-				JOptionPane.showMessageDialog(null,"ALTERAÇÃO DE PRODUTO REALIZADA");
+				JOptionPane.showMessageDialog(null,"ALTERAÇÃO DO REGISTRO DE VENDA REALIZADA");
 				con.desconectar();
 			}
 			
