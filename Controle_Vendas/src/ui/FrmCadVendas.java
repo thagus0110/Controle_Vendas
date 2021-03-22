@@ -107,12 +107,13 @@ public class FrmCadVendas extends JDialog {
 	Conexao con = new Conexao();
 	ResultSet rs = null;
 
-	
+
 	
 	// CONSTRUTOR
 	public FrmCadVendas(Window owner) {
 		super(owner);
 		initComponents();
+		con.conectar();
 		attTable();
 	}
 
@@ -137,6 +138,7 @@ public class FrmCadVendas extends JDialog {
 	public void attTable() {
 		try {
 			con.conectar();
+			
 	        ResultSet rs = con.stat.executeQuery("SELECT * FROM tbVenda");
 
 	        DefaultTableModel tb = (DefaultTableModel) tbVenda.getModel();
@@ -248,9 +250,9 @@ public class FrmCadVendas extends JDialog {
 		btnCadastrar.addActionListener(e -> {
 			try {
 				btnCadastrarActionPerformed(e);
-			} catch (SQLException e2) {
+			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
-				e2.printStackTrace();
+				e1.printStackTrace();
 			}
 		});
 		contentPane.add(btnCadastrar);

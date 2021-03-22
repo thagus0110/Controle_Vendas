@@ -31,13 +31,20 @@ public class FrmPrincipal {
 	}
 
 	private void menuCadCliActionPerformed(ActionEvent e) {
-		FrmCadVendas cadVenda = new FrmCadVendas(owner);
-		cadVenda.setVisible(true);
+		FrmCadCli cadCli = new FrmCadCli(owner);
+		cadCli.setVisible(true);
 		
 		
 	}
 
+	private void btnEstqStateChanged(ChangeEvent e) {
+		// TODO add your code here
+	}
 
+	private void menuCadVendaActionPerformed(ActionEvent e) {
+		FrmCadVendas cadVenda = new FrmCadVendas(owner);
+		cadVenda.setVisible(true);
+	}
 
 
 	private void initComponents() {
@@ -47,7 +54,7 @@ public class FrmPrincipal {
 		menuBar1 = new JMenuBar();
 		menu1 = new JMenu();
 		menuCadCli = new JMenuItem();
-		menu2 = new JMenu();
+		btnEstq = new JMenu();
 		menu3 = new JMenu();
 		menuCadVenda = new JMenuItem();
 
@@ -71,19 +78,20 @@ public class FrmPrincipal {
 				}
 				menuBar1.add(menu1);
 
-				//======== menu2 ========
+				//======== btnEstq ========
 				{
-					menu2.setText("ESTOQUE");
+					btnEstq.setText("ESTOQUE");
+					btnEstq.addChangeListener(e -> btnEstqStateChanged(e));
 				}
-				menuBar1.add(menu2);
+				menuBar1.add(btnEstq);
 
 				//======== menu3 ========
 				{
-					menu3.setText("VENDAS");
+					menu3.setText("VENDA");
 
-					//---- menuCadCli ----
+					//---- menuCadVenda ----
 					menuCadVenda.setText("NOVA VENDA");
-					menuCadVenda.addActionListener(e -> menuCadCliActionPerformed(e));
+					menuCadVenda.addActionListener(e -> menuCadVendaActionPerformed(e));
 					menu3.add(menuCadVenda);
 				}
 				menuBar1.add(menu3);
@@ -92,8 +100,9 @@ public class FrmPrincipal {
 			frmPrincipal.setSize(805, 515);
 			frmPrincipal.setLocationRelativeTo(null);
 		}
+		}
 		// JFormDesigner - End of component initialization  //GEN-END:initComponents
-	}
+	
 
 	// JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
 	// Generated using JFormDesigner Evaluation license - Gustavo
@@ -101,7 +110,7 @@ public class FrmPrincipal {
 	private JMenuBar menuBar1;
 	private JMenu menu1;
 	private JMenuItem menuCadCli;
-	private JMenu menu2;
+	private JMenu btnEstq;
 	private JMenu menu3;
 	private JMenuItem menuCadVenda;
 	// JFormDesigner - End of variables declaration  //GEN-END:variables

@@ -60,6 +60,7 @@ public class FrmCadCli extends JDialog {
 	// CONSTRUTOR
 	public FrmCadCli(Window owner) {
 		super(owner);
+		con.conectar();
 		initComponents();
 		attTable();
 	}

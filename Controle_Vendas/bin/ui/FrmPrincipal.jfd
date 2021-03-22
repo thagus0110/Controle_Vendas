@@ -30,7 +30,7 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "menuCadVenda"
 						"text": "NOVA VENDA"
-						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "menuCadVendaActionPerformed", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuCadVendaActionPerformed", true ) )
 					} )
 				} )
 			}
