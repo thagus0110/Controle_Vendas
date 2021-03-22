@@ -1,0 +1,261 @@
+JFDML JFormDesigner: "7.0.3.1.342" Java: "15.0.2" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) {
+			"autoSize": false
+		} ) {
+			name: "this"
+			"title": "CLIENTE"
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "txtCodProd"
+				auxiliary() {
+					"JavaCodeGenerator.variableName": "txtCodProd"
+				}
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 140
+				"y": 280
+				"width": 125
+				"height": 20
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "txtCpf"
+				auxiliary() {
+					"JavaCodeGenerator.variableName": "txtCpf"
+				}
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 140
+				"y": 330
+				"width": 205
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "CÓDIGO DO PRODUTO"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 140
+				"y": 260
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "CPF DO CLIENTE"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 155
+				"height": 14
+				"x": 140
+				"y": 315
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "btnCadastrar"
+				"text": "CADASTRAR"
+				"font": &SwingDerivedFont0 new com.jformdesigner.model.SwingDerivedFont( null, 0, -2, false )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnCadastrarActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 405
+				"y": 255
+				"width": 135
+				"height": 35
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "tbVenda"
+					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( "" )
+							add( "" )
+							add( "" )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+					}, new java.util.Vector {
+						add( "CPF CLIENTE" )
+						add( "NOME " )
+						add( "COD. PRODUTO" )
+						add( "NOME PRODUTO" )
+						add( "PREÇO" )
+						add( "QUANTIDADE" )
+						add( "TOTAL" )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( false )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( new com.jformdesigner.model.SwingTableColumn( null, 0, 0, 0, false ) )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					} )
+					auxiliary() {
+						"JavaCodeGenerator.variableName": "tbVenda"
+					}
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 480
+				"height": 235
+				"x": 25
+				"y": 10
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "btnAtualizar"
+				"text": "ATUALIZAR"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnAtualizarActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 525
+				"y": 120
+				"height": 35
+				"width": 104
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "btnAlt"
+				"font": #SwingDerivedFont0
+				"text": "ALTERA VENDA"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnAltActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 135
+				"height": 35
+				"x": 405
+				"y": 295
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "btnRemover"
+				"text": "REMOVER"
+				"font": #SwingDerivedFont0
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnRemoverActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 135
+				"height": 35
+				"x": 405
+				"y": 335
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "ALTERAR COMPRA"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 425
+				"y": 305
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "txtQuantidade"
+				auxiliary() {
+					"JavaCodeGenerator.variableName": "txtQuantidade"
+				}
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 205
+				"height": 20
+				"x": 140
+				"y": 380
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label4"
+				"text": "QUANTIA COMPRADA"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 155
+				"height": 14
+				"x": 140
+				"y": 365
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 25, 5 )
+			"size": new java.awt.Dimension( 685, 450 )
+		} )
+	}
+}
