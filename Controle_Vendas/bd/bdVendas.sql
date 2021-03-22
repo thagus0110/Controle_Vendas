@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21-Mar-2021 às 02:23
+-- Tempo de geração: 22-Mar-2021 às 06:00
 -- Versão do servidor: 10.4.18-MariaDB
 -- versão do PHP: 8.0.3
 
@@ -82,15 +82,16 @@ CREATE TABLE `tbvenda` (
   `totalVenda` double NOT NULL,
   `precoProd` double NOT NULL,
   `quantidadeItens` int(11) NOT NULL,
-  `cpfCli` varchar(20) NOT NULL
+  `cpfCli` varchar(20) NOT NULL,
+  `codVenda` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `tbvenda`
 --
 
-INSERT INTO `tbvenda` (`nomeCli`, `codProd`, `nomeProd`, `descricaoProd`, `totalVenda`, `precoProd`, `quantidadeItens`, `cpfCli`) VALUES
-('Gustavo', 1, 'ckdoopkc', 'okopkopok', 40, 20, 2, '1234');
+INSERT INTO `tbvenda` (`nomeCli`, `codProd`, `nomeProd`, `descricaoProd`, `totalVenda`, `precoProd`, `quantidadeItens`, `cpfCli`, `codVenda`) VALUES
+('Gustavo', 1, 'ckdoopkc', 'okopkopok', 40, 20, 2, '1234', 1);
 
 --
 -- Índices para tabelas despejadas
@@ -112,6 +113,7 @@ ALTER TABLE `tbestoque`
 -- Índices para tabela `tbvenda`
 --
 ALTER TABLE `tbvenda`
+  ADD PRIMARY KEY (`codVenda`),
   ADD KEY `fk_codProd` (`codProd`),
   ADD KEY `fk_cpfCli` (`cpfCli`);
 
@@ -124,6 +126,12 @@ ALTER TABLE `tbvenda`
 --
 ALTER TABLE `tbestoque`
   MODIFY `codProd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `tbvenda`
+--
+ALTER TABLE `tbvenda`
+  MODIFY `codVenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restrições para despejos de tabelas
