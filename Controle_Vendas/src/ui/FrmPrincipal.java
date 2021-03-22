@@ -38,7 +38,8 @@ public class FrmPrincipal {
 	}
 
 	private void btnEstqStateChanged(ChangeEvent e) {
-		// TODO add your code here
+		FrmEstoque cadEst = new FrmEstoque(owner);
+		cadEst.setVisible(true);
 	}
 
 	private void menuCadVendaActionPerformed(ActionEvent e) {

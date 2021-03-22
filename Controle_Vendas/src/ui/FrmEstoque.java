@@ -53,18 +53,28 @@ public class FrmEstoque extends JDialog {
 		separator1 = new JSeparator();
 		vSpacer1 = new JPanel(null);
 
-		// ======== this ========
+		//======== this ========
 		setTitle("ESTOQUE");
 		var contentPane = getContentPane();
 		contentPane.setLayout(null);
 
-		// ======== scrollPane1 ========
+		//======== scrollPane1 ========
 		{
 
-			// ---- tabEstoque ----
+			//---- tabEstoque ----
 			tabEstoque.setModel(new DefaultTableModel(
-					new Object[][] { { null, null, null, null, null }, { null, null, null, null, null }, },
-					new String[] { "CODIGO", "PRODUTO", "DESCRI\u00c7\u00c3O", "QUANTIDADE", "PRE\u00c7O" }));
+				new Object[][] {
+					{null, null, null, null, null},
+					{null, null, null, null, null},
+					{null, null, null, null, null},
+					{null, null, null, null, null},
+					{null, null, null, null, null},
+					{null, null, null, null, null},
+				},
+				new String[] {
+					"CODIGO", "PRODUTO", "DESCRI\u00c7\u00c3O", "QUANTIDADE", "PRE\u00c7O"
+				}
+			));
 			scrollPane1.setViewportView(tabEstoque);
 		}
 		contentPane.add(scrollPane1);
@@ -78,44 +88,44 @@ public class FrmEstoque extends JDialog {
 		contentPane.add(textField5);
 		textField5.setBounds(325, 235, 60, 25);
 
-		// ---- label1 ----
+		//---- label1 ----
 		label1.setText("PRODUTO");
 		contentPane.add(label1);
 		label1.setBounds(new Rectangle(new Point(30, 220), label1.getPreferredSize()));
 
-		// ---- label3 ----
+		//---- label3 ----
 		label3.setText("QUANTIDADE");
 		contentPane.add(label3);
 		label3.setBounds(240, 220, 85, 14);
 
-		// ---- label4 ----
+		//---- label4 ----
 		label4.setText("DESCRI\u00c7\u00c3O");
 		contentPane.add(label4);
 		label4.setBounds(135, 220, 75, 14);
 
-		// ---- label2 ----
+		//---- label2 ----
 		label2.setText("PRE\u00c7O");
 		contentPane.add(label2);
 		label2.setBounds(335, 220, 49, 14);
 
-		// ---- button1 ----
+		//---- button1 ----
 		button1.setText("CADASTRAR");
 		contentPane.add(button1);
 		button1.setBounds(new Rectangle(new Point(60, 280), button1.getPreferredSize()));
 
-		// ---- button2 ----
+		//---- button2 ----
 		button2.setText("ALTERAR");
 		contentPane.add(button2);
 		button2.setBounds(180, 280, 95, button2.getPreferredSize().height);
 
-		// ---- label5 ----
+		//---- label5 ----
 		label5.setText("-->");
 		contentPane.add(label5);
 		label5.setBounds(285, 285, 30, label5.getPreferredSize().height);
 		contentPane.add(textField6);
 		textField6.setBounds(310, 280, 40, 25);
 
-		// ---- label6 ----
+		//---- label6 ----
 		label6.setText("C\u00d3DIGO");
 		contentPane.add(label6);
 		label6.setBounds(310, 305, 49, 14);
@@ -127,7 +137,7 @@ public class FrmEstoque extends JDialog {
 		{
 			// compute preferred size
 			Dimension preferredSize = new Dimension();
-			for (int i = 0; i < contentPane.getComponentCount(); i++) {
+			for(int i = 0; i < contentPane.getComponentCount(); i++) {
 				Rectangle bounds = contentPane.getComponent(i).getBounds();
 				preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
 				preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);

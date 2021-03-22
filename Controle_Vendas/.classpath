@@ -6,7 +6,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Documents/GitHub/Controle-de-Estoque/Controle de Estoque/Connector J 8.0/mysql-connector-java-8.0.23.jar"/>
 	<classpathentry kind="lib" path="lib/miglayout-swing.jar" sourcepath="lib/miglayout-swing-sources.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:platform:/resource/Controle_Vendas/lib/miglayout-swing-javadoc.jar!/"/>
@@ -27,42 +26,6 @@
 			<attribute name="javadoc_location" value="jar:platform:/resource/Controle_Vendas/lib/jgoodies-common-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/artifacts.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/content.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.core.databinding.xml_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.core.databinding_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.core.java_1.9.2.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.core.lib_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.core.ui_1.10.0.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.core.xml_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.core_1.10.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.doc.user_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.layout.group_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.os.linux_1.9.2.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.os.macosx_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.os.win32_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.os_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.rcp.databinding.emf_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.rcp.databinding.xwt_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.rcp.databinding_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.rcp.doc.user_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.rcp.nebula_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.rcp.swing2swt_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.rcp.SWT_AWT_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.rcp_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.runtime.lib_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.runtime_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.swing.databinding_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.swing.doc.user_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.swing.FormLayout.lib_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.swing.FormLayout_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.swing.java6_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.swing.jsr296_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.swing.MigLayout.lib_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.swing.MigLayout_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.swing_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.swt.widgets.baseline_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.swt_1.9.1.202102271638.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Elisabete_2/Downloads/plugins/org.eclipse.wb.xwt_1.9.1.202102271638.jar"/>
+	<classpathentry kind="lib" path="C:/Users/thais.cpd/Downloads/mysql-connector-java-8.0.23.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
