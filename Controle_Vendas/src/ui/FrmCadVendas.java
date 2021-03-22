@@ -35,6 +35,7 @@ import entities.Vendas;
 public class FrmCadVendas extends JDialog {
 
 	// ATRIBUTOS
+	int codVenda;
 	int codProd;
 	String cpfCli;
 	String descricaoProd;
@@ -44,67 +45,58 @@ public class FrmCadVendas extends JDialog {
 	int quantidadeItens;
 	double totalVenda;
 	
-	// GETTERS E SETTERS
+	public int getCodVenda() {
+		return codVenda;
+	}
+	public void setCodVenda(int codVenda) {
+		this.codVenda = codVenda;
+	}
+
 	public int getCodProd() {
 		return codProd;
 	}
-
 	public void setCodProd(int codProd) {
 		this.codProd = codProd;
 	}
-
 	public String getCpfCli() {
 		return cpfCli;
 	}
-
 	public void setCpfCli(String cpfCli) {
 		this.cpfCli = cpfCli;
 	}
 	public String getDescricaoProd() {
 		return descricaoProd;
 	}
-
 	public void setDescricaoProd(String descricaoProd) {
 		this.descricaoProd = descricaoProd;
 	}
-
-
 	public String getNomeCli() {
 		return nomeCli;
 	}
-
 	public void setNomeCli(String nomeCli) {
 		this.nomeCli = nomeCli;
 	}
-
 	public String getNomeProd() {
 		return nomeProd;
 	}
-
 	public void setNomeProd(String nomeProd) {
 		this.nomeProd = nomeProd;
 	}
-
 	public double getPrecoProd() {
 		return precoProd;
 	}
-
 	public void setPrecoProd(double precoProd) {
 		this.precoProd = precoProd;
 	}
-
 	public int getQuantidadeItens() {
 		return quantidadeItens;
 	}
-
 	public void setQuantidadeItens(int quantidadeItens) {
 		this.quantidadeItens = quantidadeItens;
 	}
-
 	public double getTotalVenda() {
 		return totalVenda;
 	}
-
 	public void setTotalVenda(double totalVenda) {
 		this.totalVenda = totalVenda;
 	}
@@ -132,7 +124,7 @@ public class FrmCadVendas extends JDialog {
 		this.setQuantidadeItens(Integer.parseInt(txtQuantidade.getText()));
 		
 		
-		ven.interceccao();
+		ven.dadosBanco(cpfCli, codProd, quantidadeItens);;
 
 		txtCodProd.setText("");
 		txtQuantidade.setText("");
@@ -155,7 +147,8 @@ public class FrmCadVendas extends JDialog {
 
 	        	ven.dadosBanco(cpfCli, codProd, quantidadeItens);
 	        	
-	            tb.addRow(new Object[]{rs.getString("cpfCli"),
+	            tb.addRow(new Object[]{rs.getInt("codVenda"),
+	            rs.getString("cpfCli"),
 	            rs.getString("nomeCli"),
 	            rs.getInt("codProd"),
 				rs.getString("nomeProd"),
@@ -180,12 +173,33 @@ public class FrmCadVendas extends JDialog {
 		attTable();
 	}
 
-	private void btnAltActionPerformed(ActionEvent e) {
-		// TODO add your code here
+	private void btnAltActionPerformed(ActionEvent e) throws SQLException {
+		
+		this.setCodVenda(Integer.parseInt(txtCodVenda.getText()));
+		this.setCodProd(Integer.parseInt(txtCodProd.getText()));
+		this.setCpfCli(txtCpf.getText());
+		this.setQuantidadeItens(Integer.parseInt(txtQuantidade.getText()));
+		
+		ven.alteraVenda(codVenda, codProd, cpfCli, quantidadeItens);
+		
+		txtCodVenda.setText("");
+		txtCodProd.setText("");
+		txtQuantidade.setText("");
+		txtCpf.setText("");
+		attTable();
 	}
 
 	private void btnRemoverActionPerformed(ActionEvent e) {
-		// TODO add your code here
+
+		this.setCodVenda(Integer.parseInt(txtCodVenda.getText()));
+		
+		ven.excluirVenda(codVenda);
+		
+		txtCodVenda.setText("");
+		txtCodProd.setText("");
+		txtQuantidade.setText("");
+		txtCpf.setText("");
+		attTable();
 	}
 
 
@@ -204,28 +218,29 @@ public class FrmCadVendas extends JDialog {
 		btnAtualizar = new JButton();
 		btnAlt = new JButton();
 		btnRemover = new JButton();
-		label1 = new JLabel();
 		txtQuantidade = new JTextField();
 		label4 = new JLabel();
+		label5 = new JLabel();
+		txtCodVenda = new JTextField();
 
 		//======== this ========
 		setTitle("CLIENTE");
 		var contentPane = getContentPane();
 		contentPane.setLayout(null);
 		contentPane.add(txtCodProd);
-		txtCodProd.setBounds(140, 280, 125, 20);
+		txtCodProd.setBounds(235, 275, 125, 20);
 		contentPane.add(txtCpf);
-		txtCpf.setBounds(140, 330, 205, txtCpf.getPreferredSize().height);
+		txtCpf.setBounds(30, 335, 165, txtCpf.getPreferredSize().height);
 
 		//---- label2 ----
 		label2.setText("C\u00d3DIGO DO PRODUTO");
 		contentPane.add(label2);
-		label2.setBounds(new Rectangle(new Point(140, 260), label2.getPreferredSize()));
+		label2.setBounds(new Rectangle(new Point(235, 260), label2.getPreferredSize()));
 
 		//---- label3 ----
 		label3.setText("CPF DO CLIENTE");
 		contentPane.add(label3);
-		label3.setBounds(140, 315, 155, 14);
+		label3.setBounds(30, 320, 155, 14);
 
 		//---- btnCadastrar ----
 		btnCadastrar.setText("CADASTRAR");
@@ -233,13 +248,13 @@ public class FrmCadVendas extends JDialog {
 		btnCadastrar.addActionListener(e -> {
 			try {
 				btnCadastrarActionPerformed(e);
-			} catch (SQLException e1) {
+			} catch (SQLException e2) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				e2.printStackTrace();
 			}
 		});
 		contentPane.add(btnCadastrar);
-		btnCadastrar.setBounds(405, 255, 135, 35);
+		btnCadastrar.setBounds(405, 295, 135, 35);
 
 		//======== scrollPane1 ========
 		{
@@ -247,23 +262,23 @@ public class FrmCadVendas extends JDialog {
 			//---- tbVenda ----
 			tbVenda.setModel(new DefaultTableModel(
 				new Object[][] {
-					{null, null, null, "", "", "", null},
-					{null, null, null, null, null, null, null},
-					{null, null, null, null, null, null, null},
-					{null, null, null, null, null, null, null},
-					{null, null, null, null, null, null, null},
-					{null, null, null, null, null, null, null},
-					{null, null, null, null, null, null, null},
-					{null, null, null, null, null, null, null},
-					{null, null, null, null, null, null, null},
-					{null, null, null, null, null, null, null},
+					{null, null, null, null, "", "", "", null},
+					{null, null, null, null, null, null, null, null},
+					{null, null, null, null, null, null, null, null},
+					{null, null, null, null, null, null, null, null},
+					{null, null, null, null, null, null, null, null},
+					{null, null, null, null, null, null, null, null},
+					{null, null, null, null, null, null, null, null},
+					{null, null, null, null, null, null, null, null},
+					{null, null, null, null, null, null, null, null},
+					{null, null, null, null, null, null, null, null},
 				},
 				new String[] {
-					"CPF CLIENTE", "NOME ", "COD. PRODUTO", "NOME PRODUTO", "PRE\u00c7O", "QUANTIDADE", "TOTAL"
+					"C\u00d3D. VENDA", "CPF CLIENTE", "NOME ", "COD. PRODUTO", "NOME PRODUTO", "PRE\u00c7O", "QUANTIDADE", "TOTAL"
 				}
 			) {
 				boolean[] columnEditable = new boolean[] {
-					false, true, true, true, true, true, true
+					true, false, true, true, true, true, true, true
 				};
 				@Override
 				public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -272,44 +287,53 @@ public class FrmCadVendas extends JDialog {
 			});
 			{
 				TableColumnModel cm = tbVenda.getColumnModel();
-				cm.getColumn(0).setResizable(false);
+				cm.getColumn(1).setResizable(false);
 			}
 			scrollPane1.setViewportView(tbVenda);
 		}
 		contentPane.add(scrollPane1);
-		scrollPane1.setBounds(25, 10, 480, 235);
+		scrollPane1.setBounds(25, 10, 635, 235);
 
 		//---- btnAtualizar ----
 		btnAtualizar.setText("ATUALIZAR");
 		btnAtualizar.addActionListener(e -> btnAtualizarActionPerformed(e));
 		contentPane.add(btnAtualizar);
-		btnAtualizar.setBounds(525, 120, 104, 35);
+		btnAtualizar.setBounds(405, 255, 135, 35);
 
 		//---- btnAlt ----
 		btnAlt.setFont(btnAlt.getFont().deriveFont(btnAlt.getFont().getSize() - 2f));
 		btnAlt.setText("ALTERA VENDA");
-		btnAlt.addActionListener(e -> btnAltActionPerformed(e));
+		btnAlt.addActionListener(e -> {
+			try {
+				btnAltActionPerformed(e);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
 		contentPane.add(btnAlt);
-		btnAlt.setBounds(405, 295, 135, 35);
+		btnAlt.setBounds(405, 335, 135, 35);
 
 		//---- btnRemover ----
 		btnRemover.setText("REMOVER");
 		btnRemover.setFont(btnRemover.getFont().deriveFont(btnRemover.getFont().getSize() - 2f));
 		btnRemover.addActionListener(e -> btnRemoverActionPerformed(e));
 		contentPane.add(btnRemover);
-		btnRemover.setBounds(405, 335, 135, 35);
-
-		//---- label1 ----
-		label1.setText("ALTERAR COMPRA");
-		contentPane.add(label1);
-		label1.setBounds(new Rectangle(new Point(425, 305), label1.getPreferredSize()));
+		btnRemover.setBounds(405, 375, 135, 35);
 		contentPane.add(txtQuantidade);
-		txtQuantidade.setBounds(140, 380, 205, 20);
+		txtQuantidade.setBounds(235, 335, 125, 20);
 
 		//---- label4 ----
 		label4.setText("QUANTIA COMPRADA");
 		contentPane.add(label4);
-		label4.setBounds(140, 365, 155, 14);
+		label4.setBounds(235, 320, 155, 14);
+
+		//---- label5 ----
+		label5.setText("C\u00d3DIGO DA VENDA");
+		contentPane.add(label5);
+		label5.setBounds(30, 265, 111, 14);
+		contentPane.add(txtCodVenda);
+		txtCodVenda.setBounds(30, 280, 125, 20);
 
 		contentPane.setPreferredSize(new Dimension(685, 450));
 		pack();
@@ -329,8 +353,9 @@ public class FrmCadVendas extends JDialog {
 	private JButton btnAtualizar;
 	private JButton btnAlt;
 	private JButton btnRemover;
-	private JLabel label1;
 	private JTextField txtQuantidade;
 	private JLabel label4;
+	private JLabel label5;
+	private JTextField txtCodVenda;
 	// JFormDesigner - End of variables declaration //GEN-END:variables
 }
