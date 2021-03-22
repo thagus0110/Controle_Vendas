@@ -26,6 +26,6 @@
 			<attribute name="javadoc_location" value="jar:platform:/resource/Controle_Vendas/lib/jgoodies-common-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/thais.cpd/Downloads/mysql-connector-java-8.0.23.jar"/>
+	<classpathentry kind="lib" path="E:/Trabalho/Documents/GitHub/Controle-de-Estoque/Controle de Estoque/Connector J 8.0/mysql-connector-java-8.0.23.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
