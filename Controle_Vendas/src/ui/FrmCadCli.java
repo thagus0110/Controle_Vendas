@@ -1,7 +1,3 @@
-/*
- * Created by JFormDesigner on Sun Mar 21 00:50:53 GMT-03:00 2021
- */
-
 package ui;
 
 import java.awt.Dimension;
@@ -11,34 +7,22 @@ import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import conn.Conexao;
 import entities.Cliente;
-
-/**
- * @author Gustavo
- */
 
 public class FrmCadCli extends JDialog {
 
 	// ATRIBUTOS
 	private String cpf;
 	private String nome;
-
-	// INSTANCIAS
-	Cliente cli = new Cliente();
-	Conexao con = new Conexao();
-	ResultSet rs = null;
 
 	// GETTERS E SETTERS
 	public String getCpf() {
@@ -57,7 +41,12 @@ public class FrmCadCli extends JDialog {
 		this.nome = nome;
 	}
 
-	// CONSTRUTOR
+	// OBJETOS
+	Cliente cli = new Cliente();
+	Conexao con = new Conexao();
+	ResultSet rs = null;
+
+	// METODOS
 	public FrmCadCli(Window owner) {
 		super(owner);
 		con.conectar();
@@ -65,43 +54,33 @@ public class FrmCadCli extends JDialog {
 		attTable();
 	}
 
-	// AÇÕES
 	private void btnCadastrarActionPerformed(ActionEvent e) {
-		
 		this.setCpf(txtCpf.getText());
 		this.setNome(txtNome.getText());
-					
+
 		cli.addCliente(cpf, nome);
 		txtCpf.setText("");
 		txtNome.setText("");
 		attTable();
-
-		
 	}
 
 	public void attTable() {
 		try {
 			con.conectar();
-	        ResultSet rs = con.stat.executeQuery("SELECT * FROM tbcliente");
+			ResultSet rs = con.stat.executeQuery("SELECT * FROM tbcliente");
 
-	        DefaultTableModel tb = (DefaultTableModel) tabCliente.getModel();
+			DefaultTableModel tb = (DefaultTableModel) tabCliente.getModel();
 
-	        tb.setNumRows(0);
+			tb.setNumRows(0);
 
-	        while(rs.next()){
+			while (rs.next()) {
+				tb.addRow(new Object[] { rs.getString("cpfCli"), rs.getString("nomeCli") });
+			}
 
-	            tb.addRow(new Object[]{rs.getString("cpfCli"),
-	            rs.getString("nomeCli")	            
-	            });
+		} catch (SQLException e) {
+			System.out.println("Ocorreu um erro de SQL");
+		}
 
-	        }
-
-	    } 
-		catch (SQLException e){
-	        System.out.println("Ocorreu um erro de SQL");
-
-	    }
-		
 		con.desconectar();
 	}
 
@@ -109,18 +88,18 @@ public class FrmCadCli extends JDialog {
 		attTable();
 	}
 
-
 	private void btnAltActionPerformed(ActionEvent e) {
 		this.setNome(txtNome.getText());
 		this.setCpf(txtCpf.getText());
-		
-		try{
+
+		try {
 			cli.alterarNome(cpf, nome);
 		}
-		
-		catch (Exception i){
-			
+
+		catch (Exception i) {
+			System.out.println(i.getMessage());
 		}
+		
 		txtCpf.setText("");
 		txtNome.setText("");
 		attTable();
@@ -128,22 +107,19 @@ public class FrmCadCli extends JDialog {
 
 	private void btnRemoverActionPerformed(ActionEvent e) {
 		this.setCpf(txtCpf.getText());
-		
+
 		try {
 			cli.removerCliente(cpf);
 		}
-		
-		catch(Exception i){
-			
+
+		catch (Exception i) {
+			System.out.println(i.getMessage());
 		}
+		
 		txtCpf.setText("");
 		txtNome.setText("");
 		attTable();
 	}
-	
-	
-	
-
 
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY
@@ -160,7 +136,7 @@ public class FrmCadCli extends JDialog {
 		btnAlt = new JButton();
 		btnRemover = new JButton();
 
-		//======== this ========
+		// ======== this ========
 		setTitle("CLIENTE");
 		var contentPane = getContentPane();
 		contentPane.setLayout(null);
@@ -169,70 +145,50 @@ public class FrmCadCli extends JDialog {
 		contentPane.add(txtNome);
 		txtNome.setBounds(140, 330, 205, txtNome.getPreferredSize().height);
 
-		//---- label2 ----
+		// ---- label2 ----
 		label2.setText("CPF");
 		contentPane.add(label2);
 		label2.setBounds(new Rectangle(new Point(140, 260), label2.getPreferredSize()));
 
-		//---- label3 ----
+		// ---- label3 ----
 		label3.setText("NOME");
 		contentPane.add(label3);
 		label3.setBounds(140, 315, 45, 14);
 
-		//---- btnCadastrar ----
+		// ---- btnCadastrar ----
 		btnCadastrar.setText("CADASTRAR");
 		btnCadastrar.setFont(btnCadastrar.getFont().deriveFont(btnCadastrar.getFont().getSize() - 2f));
 		btnCadastrar.addActionListener(e -> btnCadastrarActionPerformed(e));
 		contentPane.add(btnCadastrar);
 		btnCadastrar.setBounds(405, 255, 135, 35);
 
-		//======== scrollPane1 ========
+		// ======== scrollPane1 ========
 		{
 
-			//---- tabCliente ----
-			tabCliente.setModel(new DefaultTableModel(
-				new Object[][] {
-					{null, null},
-					{null, null},
-					{null, null},
-					{null, null},
-					{null, null},
-					{null, null},
-					{null, null},
-					{null, null},
-					{null, null},
-					{null, null},
-					{null, null},
-					{null, null},
-					{null, null},
-					{null, null},
-					{null, null},
-					{null, null},
-					{null, null},
-				},
-				new String[] {
-					"CPF", "NOME"
-				}
-			));
+			// ---- tabCliente ----
+			tabCliente.setModel(new DefaultTableModel(new Object[][] { { null, null }, { null, null }, { null, null },
+					{ null, null }, { null, null }, { null, null }, { null, null }, { null, null }, { null, null },
+					{ null, null }, { null, null }, { null, null }, { null, null }, { null, null }, { null, null },
+					{ null, null }, { null, null }, }, new String[] { "CPF", "NOME" }));
 			scrollPane1.setViewportView(tabCliente);
 		}
 		contentPane.add(scrollPane1);
 		scrollPane1.setBounds(140, 10, 365, 235);
 
-		//---- btnAtualizar ----
+		// ---- btnAtualizar ----
 		btnAtualizar.setText("ATUALIZAR");
 		btnAtualizar.addActionListener(e -> btnAtualizarActionPerformed(e));
 		contentPane.add(btnAtualizar);
 		btnAtualizar.setBounds(525, 120, 104, 35);
 
-		//---- btnAlt ----
+		// ---- btnAlt ----
 		btnAlt.setText("ALTERAR (pelo cpf)");
 		btnAlt.setFont(btnAlt.getFont().deriveFont(btnAlt.getFont().getSize() - 2f));
 		btnAlt.addActionListener(e -> btnAltActionPerformed(e));
 		contentPane.add(btnAlt);
 		btnAlt.setBounds(405, 295, 135, 35);
 
-		//---- btnRemover ----
+		// ---- btnRemover ----
 		btnRemover.setText("REMOVER");
 		btnRemover.setFont(btnRemover.getFont().deriveFont(btnRemover.getFont().getSize() - 2f));
 		btnRemover.addActionListener(e -> btnRemoverActionPerformed(e));

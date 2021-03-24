@@ -1,60 +1,41 @@
-/*
- * Created by JFormDesigner on Sun Mar 21 00:18:47 GMT-03:00 2021
- */
-
 package ui;
 
 import java.awt.*;
 import java.awt.Frame;
-import java.awt.event.*;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
-
 import javax.swing.BoxLayout;
 import javax.swing.JDialog;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import javax.swing.event.*;
-
-import javax.swing.JOptionPane;
-
-
 /**
  * @author Gustavo
  */
 public class FrmPrincipal {
+	
 	private static Frame owner;
-	public FrmPrincipal() {
-		
-		initComponents();
+	
+	public FrmPrincipal() {		
+		initComponents();	
 		frmPrincipal.setVisible(true);
 	}
 
 	private void menuCadCliActionPerformed(ActionEvent e) {
 		FrmCadCli cadCli = new FrmCadCli(owner);
 		cadCli.setVisible(true);
-		
-		
 	}
-
 
 	private void menuCadVendaActionPerformed(ActionEvent e) {
 		FrmCadVendas cadVenda = new FrmCadVendas(owner);
 		cadVenda.setVisible(true);
 	}
 
-	private void menuEstActionPerformed(ActionEvent e) {
-	
-	}
-
 	private void menuAltEstoqueActionPerformed(ActionEvent e) {
 		FrmEstoque est = new FrmEstoque(owner);
 		est.setVisible(true);
 	}
-
-
 
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -92,7 +73,6 @@ public class FrmPrincipal {
 				//======== menuEst ========
 				{
 					menuEst.setText("ESTOQUE");
-					menuEst.addActionListener(e -> menuEstActionPerformed(e));
 
 					//---- menuAltEstoque ----
 					menuAltEstoque.setText("ALTERAR ESTOQUE");
@@ -116,13 +96,13 @@ public class FrmPrincipal {
 
 			//======== panel1 ========
 			{
-				panel1.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax
-				. swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing
-				.border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .
-				Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red
-				) ,panel1. getBorder () ) ); panel1. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override
-				public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName (
-				) ) )throw new RuntimeException( ) ;} } );
+				panel1.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax
+				.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing
+				.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.
+				Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt.Color.red
+				),panel1. getBorder()));panel1. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override
+				public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order".equals(e.getPropertyName(
+				)))throw new RuntimeException();}});
 				panel1.setLayout(new BoxLayout(panel1, BoxLayout.X_AXIS));
 			}
 			frmPrincipalContentPane.add(panel1);
@@ -159,6 +139,5 @@ public class FrmPrincipal {
 	private JMenu menu3;
 	private JMenuItem menuCadVenda;
 	private JPanel panel1;
-	// JFormDesigner - End of variables declaration  //GEN-END:variables
 	
 }

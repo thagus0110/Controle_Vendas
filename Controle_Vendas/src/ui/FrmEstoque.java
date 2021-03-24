@@ -11,18 +11,14 @@ import java.awt.Rectangle;
 import java.awt.Window;
 import java.awt.event.*;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-
 import conn.Conexao;
 import entities.Estoque;
 
@@ -30,8 +26,7 @@ import entities.Estoque;
  * @author Gustavo
  */
 public class FrmEstoque extends JDialog {
-	
-
+	// METODOS
 	private void btnCadastrarActionPerformed(ActionEvent e) {
 		setNomeProd(txtProduto.getText());
 		setDescricaoProd(txtDescricao.getText());
@@ -221,8 +216,6 @@ public class FrmEstoque extends JDialog {
 	private String nomeProd, descricaoProd;
 	private double precoProd;
 
-	
-	
 	// INSTANCIAS
 	Conexao con = new Conexao();
 	Estoque est = new Estoque();
@@ -276,7 +269,6 @@ public class FrmEstoque extends JDialog {
 	}
 	
 	public void attTable(){		
-			
 			try {
 				con.conectar();			
 				rs = con.stat.executeQuery("SELECT * FROM tbestoque");
