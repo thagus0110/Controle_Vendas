@@ -9,6 +9,7 @@ import java.awt.Insets;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Window;
+import java.awt.event.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -31,27 +32,78 @@ import entities.Estoque;
 public class FrmEstoque extends JDialog {
 	
 
+	private void btnCadastrarActionPerformed(ActionEvent e) {
+		setNomeProd(txtProduto.getText());
+		setDescricaoProd(txtDescricao.getText());
+		setQuantidadeProd(Integer.parseInt(txtQuantidade.getText()));
+		setPrecoProd(Double.parseDouble(txtPreco.getText()));
+		
+		est.cadastrarEstoque(getNomeProd(), getDescricaoProd(), getQuantidadeProd(), getPrecoProd());
+		
+		txtCodigo.setText("");
+		txtProduto.setText("");
+		txtDescricao.setText("");
+		txtQuantidade.setText("");
+		txtPreco.setText("");
+		
+		attTable();
+	}
+
+	private void btnAlterarActionPerformed(ActionEvent e) {
+		
+		setCodProd(Integer.parseInt(txtCodigo.getText()));
+		setNomeProd(txtProduto.getText());
+		setDescricaoProd(txtDescricao.getText());
+		setQuantidadeProd(Integer.parseInt(txtQuantidade.getText()));
+		setPrecoProd(Double.parseDouble(txtPreco.getText()));
+		
+		est.atualizarEstoque(getCodProd(), getNomeProd(), getDescricaoProd(), getQuantidadeProd(), getPrecoProd());
+		
+		txtCodigo.setText("");
+		txtProduto.setText("");
+		txtDescricao.setText("");
+		txtQuantidade.setText("");
+		txtPreco.setText("");
+		
+		attTable();		
+	}
+
+	private void btnRemoverActionPerformed(ActionEvent e) {
+		setCodProd(Integer.parseInt(txtCodigo.getText()));
+		
+		est.excluirEstoque(getCodProd());
+		
+		txtCodigo.setText("");
+		txtProduto.setText("");
+		txtDescricao.setText("");
+		txtQuantidade.setText("");
+		txtPreco.setText("");
+		
+		attTable();		
+	}
+
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY
 		// //GEN-BEGIN:initComponents
 		// Generated using JFormDesigner Evaluation license - Gustavo
 		scrollPane1 = new JScrollPane();
 		tabEstoque = new JTable();
-		textField2 = new JTextField();
-		textField3 = new JTextField();
-		textField4 = new JTextField();
-		textField5 = new JTextField();
+		txtProduto = new JTextField();
+		txtDescricao = new JTextField();
+		txtQuantidade = new JTextField();
+		txtPreco = new JTextField();
 		label1 = new JLabel();
 		label3 = new JLabel();
 		label4 = new JLabel();
 		label2 = new JLabel();
-		button1 = new JButton();
-		button2 = new JButton();
+		btnCadastrar = new JButton();
+		btnAlterar = new JButton();
 		label5 = new JLabel();
-		textField6 = new JTextField();
+		txtCodigo = new JTextField();
 		label6 = new JLabel();
 		separator1 = new JSeparator();
-		vSpacer1 = new JPanel(null);
+		btnRemover = new JButton();
+		label7 = new JLabel();
 
 		//======== this ========
 		setTitle("ESTOQUE");
@@ -78,15 +130,15 @@ public class FrmEstoque extends JDialog {
 			scrollPane1.setViewportView(tabEstoque);
 		}
 		contentPane.add(scrollPane1);
-		scrollPane1.setBounds(0, 0, 595, 215);
-		contentPane.add(textField2);
-		textField2.setBounds(15, 235, 71, 25);
-		contentPane.add(textField3);
-		textField3.setBounds(95, 235, 130, 25);
-		contentPane.add(textField4);
-		textField4.setBounds(250, 235, 50, 25);
-		contentPane.add(textField5);
-		textField5.setBounds(325, 235, 60, 25);
+		scrollPane1.setBounds(0, 0, 605, 215);
+		contentPane.add(txtProduto);
+		txtProduto.setBounds(15, 235, 71, 25);
+		contentPane.add(txtDescricao);
+		txtDescricao.setBounds(95, 235, 130, 25);
+		contentPane.add(txtQuantidade);
+		txtQuantidade.setBounds(245, 235, 50, 25);
+		contentPane.add(txtPreco);
+		txtPreco.setBounds(325, 235, 60, 25);
 
 		//---- label1 ----
 		label1.setText("PRODUTO");
@@ -108,22 +160,24 @@ public class FrmEstoque extends JDialog {
 		contentPane.add(label2);
 		label2.setBounds(335, 220, 49, 14);
 
-		//---- button1 ----
-		button1.setText("CADASTRAR");
-		contentPane.add(button1);
-		button1.setBounds(new Rectangle(new Point(60, 280), button1.getPreferredSize()));
+		//---- btnCadastrar ----
+		btnCadastrar.setText("CADASTRAR");
+		btnCadastrar.addActionListener(e -> btnCadastrarActionPerformed(e));
+		contentPane.add(btnCadastrar);
+		btnCadastrar.setBounds(new Rectangle(new Point(60, 280), btnCadastrar.getPreferredSize()));
 
-		//---- button2 ----
-		button2.setText("ALTERAR");
-		contentPane.add(button2);
-		button2.setBounds(180, 280, 95, button2.getPreferredSize().height);
+		//---- btnAlterar ----
+		btnAlterar.setText("ALTERAR");
+		btnAlterar.addActionListener(e -> btnAlterarActionPerformed(e));
+		contentPane.add(btnAlterar);
+		btnAlterar.setBounds(180, 280, 95, btnAlterar.getPreferredSize().height);
 
 		//---- label5 ----
 		label5.setText("-->");
 		contentPane.add(label5);
 		label5.setBounds(285, 285, 30, label5.getPreferredSize().height);
-		contentPane.add(textField6);
-		textField6.setBounds(310, 280, 40, 25);
+		contentPane.add(txtCodigo);
+		txtCodigo.setBounds(310, 280, 40, 25);
 
 		//---- label6 ----
 		label6.setText("C\u00d3DIGO");
@@ -131,8 +185,17 @@ public class FrmEstoque extends JDialog {
 		label6.setBounds(310, 305, 49, 14);
 		contentPane.add(separator1);
 		separator1.setBounds(405, 240, separator1.getPreferredSize().width, 107);
-		contentPane.add(vSpacer1);
-		vSpacer1.setBounds(420, 225, vSpacer1.getPreferredSize().width, 140);
+
+		//---- btnRemover ----
+		btnRemover.setText("REMOVER");
+		btnRemover.addActionListener(e -> btnRemoverActionPerformed(e));
+		contentPane.add(btnRemover);
+		btnRemover.setBounds(375, 280, 95, 23);
+
+		//---- label7 ----
+		label7.setText("<--");
+		contentPane.add(label7);
+		label7.setBounds(355, 285, 30, 14);
 
 		{
 			// compute preferred size
@@ -237,20 +300,21 @@ public class FrmEstoque extends JDialog {
 	// Generated using JFormDesigner Evaluation license - Gustavo
 	private JScrollPane scrollPane1;
 	private JTable tabEstoque;
-	private JTextField textField2;
-	private JTextField textField3;
-	private JTextField textField4;
-	private JTextField textField5;
+	private JTextField txtProduto;
+	private JTextField txtDescricao;
+	private JTextField txtQuantidade;
+	private JTextField txtPreco;
 	private JLabel label1;
 	private JLabel label3;
 	private JLabel label4;
 	private JLabel label2;
-	private JButton button1;
-	private JButton button2;
+	private JButton btnCadastrar;
+	private JButton btnAlterar;
 	private JLabel label5;
-	private JTextField textField6;
+	private JTextField txtCodigo;
 	private JLabel label6;
 	private JSeparator separator1;
-	private JPanel vSpacer1;
+	private JButton btnRemover;
+	private JLabel label7;
 	// JFormDesigner - End of variables declaration //GEN-END:variables
 }
