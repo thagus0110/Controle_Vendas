@@ -100,4 +100,17 @@ public class Estoque {
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	public void descontaEstoque(int codProd, int quantidadeADescontar) {
+		try {
+			con.conectar();
+			String query = "UPDATE tbestoque SET quantidadeProd = quantidadeProd - '" + quantidadeADescontar + "' where codProd = '" + codProd + "'";			
+			con.stat.executeUpdate(query);
+			con.desconectar();			
+		}
+		
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
 }

@@ -125,59 +125,59 @@ public class FrmEstoque extends JDialog {
 			scrollPane1.setViewportView(tabEstoque);
 		}
 		contentPane.add(scrollPane1);
-		scrollPane1.setBounds(0, 0, 605, 215);
+		scrollPane1.setBounds(0, 0, 605, 275);
 		contentPane.add(txtProduto);
-		txtProduto.setBounds(15, 235, 71, 25);
+		txtProduto.setBounds(100, 300, 71, 25);
 		contentPane.add(txtDescricao);
-		txtDescricao.setBounds(95, 235, 130, 25);
+		txtDescricao.setBounds(180, 300, 130, 25);
 		contentPane.add(txtQuantidade);
-		txtQuantidade.setBounds(245, 235, 50, 25);
+		txtQuantidade.setBounds(330, 300, 50, 25);
 		contentPane.add(txtPreco);
-		txtPreco.setBounds(325, 235, 60, 25);
+		txtPreco.setBounds(410, 300, 60, 25);
 
 		//---- label1 ----
 		label1.setText("PRODUTO");
 		contentPane.add(label1);
-		label1.setBounds(new Rectangle(new Point(30, 220), label1.getPreferredSize()));
+		label1.setBounds(new Rectangle(new Point(115, 285), label1.getPreferredSize()));
 
 		//---- label3 ----
 		label3.setText("QUANTIDADE");
 		contentPane.add(label3);
-		label3.setBounds(240, 220, 85, 14);
+		label3.setBounds(325, 285, 85, 14);
 
 		//---- label4 ----
 		label4.setText("DESCRI\u00c7\u00c3O");
 		contentPane.add(label4);
-		label4.setBounds(135, 220, 75, 14);
+		label4.setBounds(205, 285, 75, 14);
 
 		//---- label2 ----
 		label2.setText("PRE\u00c7O");
 		contentPane.add(label2);
-		label2.setBounds(335, 220, 49, 14);
+		label2.setBounds(420, 285, 49, 14);
 
 		//---- btnCadastrar ----
 		btnCadastrar.setText("CADASTRAR");
 		btnCadastrar.addActionListener(e -> btnCadastrarActionPerformed(e));
 		contentPane.add(btnCadastrar);
-		btnCadastrar.setBounds(new Rectangle(new Point(60, 280), btnCadastrar.getPreferredSize()));
+		btnCadastrar.setBounds(60, 345, 100, 28);
 
 		//---- btnAlterar ----
 		btnAlterar.setText("ALTERAR");
 		btnAlterar.addActionListener(e -> btnAlterarActionPerformed(e));
 		contentPane.add(btnAlterar);
-		btnAlterar.setBounds(180, 280, 95, btnAlterar.getPreferredSize().height);
+		btnAlterar.setBounds(175, 345, 100, 28);
 
 		//---- label5 ----
 		label5.setText("-->");
 		contentPane.add(label5);
-		label5.setBounds(285, 285, 30, label5.getPreferredSize().height);
+		label5.setBounds(285, 355, 30, label5.getPreferredSize().height);
 		contentPane.add(txtCodigo);
-		txtCodigo.setBounds(310, 280, 40, 25);
+		txtCodigo.setBounds(310, 350, 50, 25);
 
 		//---- label6 ----
 		label6.setText("C\u00d3DIGO");
 		contentPane.add(label6);
-		label6.setBounds(310, 305, 49, 14);
+		label6.setBounds(315, 335, 45, 14);
 		contentPane.add(separator1);
 		separator1.setBounds(405, 240, separator1.getPreferredSize().width, 107);
 
@@ -185,12 +185,12 @@ public class FrmEstoque extends JDialog {
 		btnRemover.setText("REMOVER");
 		btnRemover.addActionListener(e -> btnRemoverActionPerformed(e));
 		contentPane.add(btnRemover);
-		btnRemover.setBounds(375, 280, 95, 23);
+		btnRemover.setBounds(395, 345, 105, 28);
 
 		//---- label7 ----
 		label7.setText("<--");
 		contentPane.add(label7);
-		label7.setBounds(355, 285, 30, 14);
+		label7.setBounds(370, 355, 30, 14);
 
 		{
 			// compute preferred size

@@ -84,13 +84,13 @@ new FormModel {
 				"x": 0
 				"y": 0
 				"width": 605
-				"height": 215
+				"height": 275
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "txtProduto"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 15
-				"y": 235
+				"x": 100
+				"y": 300
 				"width": 71
 				"height": 25
 			} )
@@ -99,31 +99,31 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 130
 				"height": 25
-				"x": 95
-				"y": 235
+				"x": 180
+				"y": 300
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "txtQuantidade"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 50
 				"height": 25
-				"x": 245
-				"y": 235
+				"x": 330
+				"y": 300
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "txtPreco"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 60
 				"height": 25
-				"x": 325
-				"y": 235
+				"x": 410
+				"y": 300
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"
 				"text": "PRODUTO"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 30
-				"y": 220
+				"x": 115
+				"y": 285
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label3"
@@ -131,8 +131,8 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 85
 				"height": 14
-				"x": 240
-				"y": 220
+				"x": 325
+				"y": 285
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label4"
@@ -140,8 +140,8 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 75
 				"height": 14
-				"x": 135
-				"y": 220
+				"x": 205
+				"y": 285
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label2"
@@ -149,8 +149,8 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 49
 				"height": 14
-				"x": 335
-				"y": 220
+				"x": 420
+				"y": 285
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "btnCadastrar"
@@ -158,41 +158,44 @@ new FormModel {
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnCadastrarActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 60
-				"y": 280
+				"y": 345
+				"width": 100
+				"height": 28
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "btnAlterar"
 				"text": "ALTERAR"
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnAlterarActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 180
-				"y": 280
-				"width": 95
+				"x": 175
+				"y": 345
+				"width": 100
+				"height": 28
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label5"
 				"text": "-->"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 285
-				"y": 285
+				"y": 355
 				"width": 30
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "txtCodigo"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 40
+				"width": 50
 				"height": 25
 				"x": 310
-				"y": 280
+				"y": 350
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label6"
 				"text": "CÓDIGO"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 49
+				"width": 45
 				"height": 14
-				"x": 310
-				"y": 305
+				"x": 315
+				"y": 335
 			} )
 			add( new FormComponent( "javax.swing.JSeparator" ) {
 				name: "separator1"
@@ -206,10 +209,10 @@ new FormModel {
 				"text": "REMOVER"
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnRemoverActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 95
-				"height": 23
-				"x": 375
-				"y": 280
+				"width": 105
+				"height": 28
+				"x": 395
+				"y": 345
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label7"
@@ -217,8 +220,8 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 30
 				"height": 14
-				"x": 355
-				"y": 285
+				"x": 370
+				"y": 355
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )

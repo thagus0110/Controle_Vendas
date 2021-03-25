@@ -95,6 +95,7 @@ public class Vendas {
 	// OBJETOS
 	Conexao con = new Conexao();
 	FrmCadVendas frm;
+	Estoque est = new Estoque();
 
 	// METODOS
 	public void getDadosParaVenda(String cpfCli, int codProd, int quantidadeItens) throws SQLException {
@@ -171,12 +172,28 @@ public class Vendas {
 			con.conectar();
 			ResultSet rs;
 			rs = con.stat.executeQuery("SELECT precoProd FROM tbestoque WHERE codProd = '" + codProd + "' ");
+			
 
 			while (rs.next()) {
 				setPrecoProd(rs.getDouble("precoProd"));
 				setTotalVenda(quantidadeItens);
 			}
 
+			int quantidadeAtual = quantidadeItens;
+			int quantidadeAntiga=0;
+			
+			
+			rs = con.stat.executeQuery("SELECT quantidadeProd from tbestoque where codProd = '"+ codProd +"'");
+			
+			while(rs.next()) {
+				quantidadeAntiga = rs.getInt("quantidadeProd");
+			}
+			
+			int quantidadeADescontar = quantidadeAtual - quantidadeAntiga;
+			
+			est.descontaEstoque(codProd, quantidadeADescontar);
+			
+			
 			String query = "UPDATE tbvenda SET codProd = " + codProd + ", cpfCli = '" + cpfCli + "', quantidadeItens = "
 					+ quantidadeItens + ", totalVenda = " + getTotalVenda() + "  WHERE codVenda = " + codVenda + "";
 			con.stat.executeUpdate(query);
@@ -191,8 +208,7 @@ public class Vendas {
 
 	}
 
-	public void cadastrarVenda(String nomeCli, String nomeProd, String descricaoProd, double precoProd, String cpfCli,
-			int codProd, int quantidadeItens) throws SQLException {
+	public void cadastrarVenda(String nomeCli, String nomeProd, String descricaoProd, double precoProd, String cpfCli, int codProd, int quantidadeItens) throws SQLException {
 		// CADASTRA NO BANCO
 		double totalVenda = quantidadeItens * precoProd;
 
@@ -203,6 +219,8 @@ public class Vendas {
 					+ nomeProd + "', " + precoProd + "," + quantidadeItens + ", " + totalVenda + ")";
 
 			con.stat.executeUpdate(query);
+			est.descontaEstoque(codProd, quantidadeItens);
+			
 			JOptionPane.showMessageDialog(null, "VENDA REALIZADA");
 			con.desconectar();
 
